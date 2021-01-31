@@ -1,28 +1,46 @@
+/**
+*@author Stefano Aragoni
+*@name calculadora1.java 
+*@language Java
+*@since 29/01/21
+*/
+
+//A esta clase no se le agrego javadoc a los métodos ya que fueron implementados a traves de la interfaz Interface.  
+
 import java.io.File;
 import java.util.Scanner;
 import java.io.FileNotFoundException;
 
 public class calculadora1 implements calculadora
 {
+	//stack que almacena la info del .txt
 	stack<String> stackCodificado = new stack<String>();
 	
+	//stack que guarda temporalmente los numeros de las operaciones postfix
 	stack<Integer> stackInt = new stack<Integer>();
 	
-	String registro = "\nBienvenidx a la Calculadora Postfix\n\n";
-	 
+	//string que guarda el procedimiento realizado
+	String register = "\nBienvenidx a la Calculadora Postfix\n\n";
+	
+	//metodo que suma dos parametros y retorna el resultado
     public int suma(int x, int y){
     	int Result = x+y;
     	return Result;
     }
-    
+
+	//metodo que resta dos parametros y retorna el resultado
     public int resta(int x, int y){
     	int Result = x-y;
     	return Result;
-    }
+	}
+	
+	//metodo que multiplica dos parametros y retorna el resultado
     public int multiplicacion(int x, int y){
     	int Result = x*y;
     	return Result;
-    }
+	}
+	
+	//metodo que divide dos parametros y retorna el resultado
     public int division(int x, int y){
     	int Result = x/y;
     	return Result;
@@ -38,6 +56,7 @@ public class calculadora1 implements calculadora
 		String[] operation = temp.split(" ");
 		
 		for(int i = 0; i < operation.length; i++) {
+			//de ser que sea un operador, se hace el calculo
             if( operation[i].equals("+") || operation[i].equals("-") || operation[i].equals("*") || operation[i].equals("/") ) {
 
                 operand2 = stackInt.pop();
@@ -47,34 +66,35 @@ public class calculadora1 implements calculadora
                     case "+": {
                         int tempOperandResult = suma(operand1,operand2);
 						stackInt.push(tempOperandResult);
-						registro = registro + (operation[i])+ "\tSumar: pop, pop y push del resultado\n";
+						register = register + (operation[i])+ "\tSumar: pop, pop y push del resultado\n";
                         break;
                     }
 
                     case "-": {
                         int tempOperandResult = resta(operand1,operand2);
 						stackInt.push(tempOperandResult);
-						registro = registro + (operation[i])+ "\tRestar: pop, pop y push del resultado\n";
+						register = register + (operation[i])+ "\tRestar: pop, pop y push del resultado\n";
                         break;
                     }
 
                     case "*": {
                         int tempOperandResult = multiplicacion(operand1,operand2);
 						stackInt.push(tempOperandResult);
-						registro = registro + (operation[i])+ "\tMultiplicar: pop, pop y push del resultado\n";
+						register = register + (operation[i])+ "\tMultiplicar: pop, pop y push del resultado\n";
                         break;
                     }
 
                     case "/": {
                         int tempOperandResult = division(operand1,operand2);
 						stackInt.push(tempOperandResult);
-						registro = registro + (operation[i])+ "\tDividir: pop, pop y push del resultado\n";
+						register = register + (operation[i])+ "\tDividir: pop, pop y push del resultado\n";
                         break;
                     }
                 }
             } else {
+				//de ser un numero, se guarda en un stack
 				stackInt.push(Integer.parseInt(operation[i]));
-				registro = registro + (operation[i])+ "\tpush operando\n";
+				register = register + (operation[i])+ "\tpush operando\n";
             }
 		}
 		
@@ -99,21 +119,21 @@ public class calculadora1 implements calculadora
 		}
 		
 
-    	
+    	//realiza todas las operaciones dentro del .txt. Almacena los resultados y el procedimiento en una variable
     	while(stackCodificado.empty() == false){
     		String temp = stackCodificado.peek();
-    		registro = registro + "\nExpresión: "+temp+"\n\nEntrada\tOperacion\n";
+    		register = register + "\nExpresión: "+temp+"\n\nEntrada\tOperacion\n";
     	
 			int tempResult = operar(stackCodificado);
 			String tempResult2 = String.valueOf(tempResult);
 
-			registro = registro + "\nResultado Final: "+tempResult2+"\n--------------------\n";
+			register = register + "\nResultado Final: "+tempResult2+"\n--------------------\n";
 
     	}	
     	
     	
-    	
-    	return registro;
+    	//retorna el procedimiento completo
+    	return register;
     }
    
    
