@@ -10,8 +10,8 @@ public interface calculadora
 {
     /**
     *Suma is responsible for adding two values and returning the result
-    *@Precondition No precondition
-    *@Postcondition Returns resultant value of the operation
+    *@param Precondition No precondition
+    *@param Postcondition Returns resultant value of the operation
     *@return Value of the operation.
     *
     */
@@ -19,8 +19,8 @@ public interface calculadora
 
     /**
     *Resta is responsible for substracting two values and returning the result
-    *@Precondition No precondition
-    *@Postcondition Returns resultant value of the operation
+    *@param Precondition No precondition
+    *@param Postcondition Returns resultant value of the operation
     *@return Value of the operation.
     *
     */
@@ -28,8 +28,8 @@ public interface calculadora
 
     /**
     *Multiplicacion is responsible for multiplying two values and returning the result
-    *@Precondition No precondition
-    *@Postcondition Returns resultant value of the operation
+    *@param Precondition No precondition
+    *@param Postcondition Returns resultant value of the operation
     *@return Value of the operation.
     *
     */
@@ -37,8 +37,8 @@ public interface calculadora
 
     /**
     *Division is responsible for adding dividing values and returning the result
-    *@Precondition No precondition
-    *@Postcondition Returns resultant value of the operation
+    *@param Precondition No precondition
+    *@param Postcondition Returns resultant value of the operation
     *@return Value of the operation.
     *
     */
@@ -46,8 +46,8 @@ public interface calculadora
 
     /**
     *Operar is responsible for decoding a postfix string, splitting the string to analize each character, and later using another Stack in order to carry out the postfix operation.
-    *@Precondition The stack is not empty and it stores strings
-    *@Postcondition Returns resultant value of the operation
+    *@param Precondition The stack is not empty and it stores strings
+    *@param Postcondition Returns resultant value of the operation
     *@return Value of the postfix operation.
     *
     */
@@ -56,8 +56,8 @@ public interface calculadora
 
     /**
     *decode is responsible for opening and reading a .txt file. It goes on to store each line in the document into a unique String stack; each line is a push. 
-    *@Precondition The .txt has text; the text represents a postfix operation
-    *@Postcondition Returns a string with the procedure
+    *@param Precondition The .txt has text; the text represents a postfix operation
+    *@param Postcondition Returns a string with the procedure
     *@return String with the procedure of the operations done and the result.
     *
     */

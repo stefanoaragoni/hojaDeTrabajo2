@@ -5,8 +5,6 @@
 *@since 29/01/21
 */
 
-//A esta clase no se le agrego javadoc a los métodos ya que fueron implementados a traves de la interfaz Interface.  
-
 import java.io.File;
 import java.util.Scanner;
 import java.io.FileNotFoundException;
@@ -22,11 +20,27 @@ public class calculadora1 implements calculadora
 	//string que guarda el procedimiento realizado
 	String register = "\nBienvenidx a la Calculadora Postfix\n\n";
 	
+	/**
+    *Suma is responsible for adding two values and returning the result
+    *@param Precondition No precondition
+    *@param Postcondition Returns resultant value of the operation
+    *@return Value of the operation.
+    *
+    */
+
 	//metodo que suma dos parametros y retorna el resultado
     public int suma(int x, int y){
     	int Result = x+y;
     	return Result;
     }
+
+	/**
+    *Resta is responsible for substracting two values and returning the result
+    *@param Precondition No precondition
+    *@param Postcondition Returns resultant value of the operation
+    *@return Value of the operation.
+    *
+    */
 
 	//metodo que resta dos parametros y retorna el resultado
     public int resta(int x, int y){
@@ -34,18 +48,40 @@ public class calculadora1 implements calculadora
     	return Result;
 	}
 	
+	/**
+    *Multiplicacion is responsible for multiplying two values and returning the result
+    *@param Precondition No precondition
+    *@param Postcondition Returns resultant value of the operation
+    *@return Value of the operation.
+    *
+    */
+
 	//metodo que multiplica dos parametros y retorna el resultado
     public int multiplicacion(int x, int y){
     	int Result = x*y;
     	return Result;
 	}
 	
+	/**
+    *Division is responsible for adding dividing values and returning the result
+    *@param Precondition No precondition
+    *@param Postcondition Returns resultant value of the operation
+    *@return Value of the operation.
+    *
+    */
 	//metodo que divide dos parametros y retorna el resultado
     public int division(int x, int y){
     	int Result = x/y;
     	return Result;
     }
 
+	/**
+    *Operar is responsible for decoding a postfix string, splitting the string to analize each character, and later using another Stack in order to carry out the postfix operation.
+    *@param Precondition The stack is not empty and it stores strings
+    *@param Postcondition Returns resultant value of the operation
+    *@return Value of the postfix operation.
+    *
+    */
     //operar recibe un stack en formato postfix, y lo opera para devolver un entero que es igual al valor total de la operación
     public int operar(stack x) {
 		int operand1, operand2;
@@ -100,7 +136,14 @@ public class calculadora1 implements calculadora
 		
     	return stackInt.pop();
     }
-    
+	
+	/**
+    *decode is responsible for opening and reading a .txt file. It goes on to store each line in the document into a unique String stack; each line is a push. 
+    *@param Precondition The .txt has text; the text represents a postfix operation
+    *@param Postcondition Returns a string with the procedure
+    *@return String with the procedure of the operations done and the result.
+    *
+    */
     //función que se encarga de leer operation archivo y decodificar cada línea para realizar las operaciones de cada una
     public String decode(String a) {
 
