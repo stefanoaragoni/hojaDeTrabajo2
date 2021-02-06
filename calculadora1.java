@@ -71,7 +71,16 @@ public class calculadora1 implements calculadora
     */
 	//metodo que divide dos parametros y retorna el resultado
     public int division(int x, int y){
-    	int Result = x/y;
+        int Result = 0;
+
+        try{
+            Result = x/y;
+
+        }catch(ArithmeticException e){
+            register = register + ("\tError: no se puede dividir entre 0. Se asumirá que el resultado de la división será 0.\n");
+            Result = 0;
+        }
+
     	return Result;
     }
 
@@ -128,15 +137,35 @@ public class calculadora1 implements calculadora
                     }
                 }
             } else {
-				//de ser un numero, se guarda en un stack
-				stackInt.push(Integer.parseInt(operation[i]));
-				register = register + (operation[i])+ "\tpush operando\n";
+                try{
+                    //de ser un numero, se guarda en un stack
+				    stackInt.push(Integer.parseInt(operation[i]));
+				    register = register + (operation[i])+ "\tpush operando\n";
+                }catch(Exception e){
+                    register = register + (operation[i])+ "\tEste no es un simbolo valido\n";
+                }
             }
-		}
-		
-    	return stackInt.pop();
+        }
+
+        int finalResult = 0;
+
+        if(stackInt.size() == 1){
+            finalResult = stackInt.pop();
+
+        }else{
+            register = register + "\n\tTodavía hay números sin operar. Hacen falta operadores\n";
+            register = register + "\tSe retornará el último numero en la cola como el resultado final\n";
+
+            finalResult = stackInt.pop();
+
+            while(!stackInt.empty()){
+                stackInt.pop();
+            }
+        }
+
+    	return finalResult;
     }
-	
+
 	/**
     *decode is responsible for opening and reading a .txt file. It goes on to store each line in the document into a unique String stack; each line is a push. 
     *@param Precondition The .txt has text; the text represents a postfix operation
